@@ -19,6 +19,7 @@ public class CircleSeekBar extends View {
 
     private int mRadioWith1;
     private int mRadioWith2;
+    private int mPadding;
     private int mProgress;
     private int mMax;
     private int mRadioColor1;
@@ -42,6 +43,7 @@ public class CircleSeekBar extends View {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CircleSeekBar, 0, 0);
         mRadioWith1 = typedArray.getInteger(R.styleable.CircleSeekBar_radioWith1, 5);
         mRadioWith2 = typedArray.getInteger(R.styleable.CircleSeekBar_radioWith2, 20);
+        mPadding = typedArray.getInteger(R.styleable.CircleSeekBar_padding, 0);
         mProgress = typedArray.getInteger(R.styleable.CircleSeekBar_progress, 0);
         mMax = typedArray.getInteger(R.styleable.CircleSeekBar_max, 100);
         mRadioColor1 = typedArray.getColor(R.styleable.CircleSeekBar_radioColor1, Color.WHITE);
@@ -76,15 +78,14 @@ public class CircleSeekBar extends View {
         RectF rectF = null;
 
         if(width<=height){
-
-            canvas.drawCircle(width/2,height/2,(width-mRadioWith2)/2,mPaint1);
-            rectF = new RectF((mRadioWith2 / 2),mRadioWith2/2+(height/2)-(width/2),(mRadioWith2 / 2)+(width-mRadioWith2),mRadioWith2/2+(height/2)-(width/2)+(width-mRadioWith2));
+            canvas.drawCircle(width/2,height/2,((width-mRadioWith2)/2)-mPadding,mPaint1);
+            rectF = new RectF((mRadioWith2 / 2)+mPadding,mRadioWith2/2+(height/2)-(width/2)+mPadding,((((width-mRadioWith2)/2)-mPadding)*2)+(mRadioWith2 / 2)+mPadding,mRadioWith2/2+(height/2)-(width/2)+mPadding+((((width-mRadioWith2)/2)-mPadding)*2));
 
         }
         else{
+            canvas.drawCircle(width/2,height/2,((height-mRadioWith2)/2)-mPadding,mPaint1);
+            rectF = new RectF(mRadioWith2/2+(width/2)-(height/2)+mPadding,(mRadioWith2 / 2)+mPadding,mRadioWith2/2+(width/2)-(height/2)+mPadding+((((height-mRadioWith2)/2)-mPadding)*2),((((height-mRadioWith2)/2)-mPadding)*2)+(mRadioWith2 / 2)+mPadding);
 
-            canvas.drawCircle(width/2,height/2,(height-mRadioWith2)/2,mPaint1);
-            rectF = new RectF(mRadioWith2/2+(width/2)-(height/2),(mRadioWith2 / 2),mRadioWith2/2+(width/2)-(height/2)+(height-mRadioWith2),(mRadioWith2 / 2)+(height-mRadioWith2));
 
         }
 
