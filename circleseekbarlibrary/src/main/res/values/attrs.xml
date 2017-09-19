@@ -6,6 +6,7 @@
     <attr name="radioWith2" format="integer"/>
     <attr name="radioColor1" format="color"/>
     <attr name="radioColor2" format="color"/>
+    <attr name="padding" format="integer"/>
     <attr name="progress" format="integer"/>
     <attr name="max" format="integer"/>
 

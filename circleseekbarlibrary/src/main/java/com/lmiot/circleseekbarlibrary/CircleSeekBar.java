@@ -73,18 +73,25 @@ public class CircleSeekBar extends View {
             /*得到view的宽高*/
         int width = getWidth();
         int height = getHeight();
-        int sort_with;
+        RectF rectF = null;
 
-        if(width>=height){
-            sort_with=height;
+        if(width<=height){
+
+            canvas.drawCircle(width/2,height/2,(width-mRadioWith2)/2,mPaint1);
+            rectF = new RectF((mRadioWith2 / 2),mRadioWith2/2+(height/2)-(width/2),(mRadioWith2 / 2)+(width-mRadioWith2),mRadioWith2/2+(height/2)-(width/2)+(width-mRadioWith2));
+
         }
         else{
-            sort_with=width;
+
+            canvas.drawCircle(width/2,height/2,(height-mRadioWith2)/2,mPaint1);
+            rectF = new RectF(mRadioWith2/2+(width/2)-(height/2),(mRadioWith2 / 2),mRadioWith2/2+(width/2)-(height/2)+(height-mRadioWith2),(mRadioWith2 / 2)+(height-mRadioWith2));
+
         }
 
 
-        canvas.drawCircle(width/2,height/2,(sort_with/2)-(mRadioWith2/2),mPaint1);
-        RectF rectF = new RectF(mRadioWith2/2 , mRadioWith2/2 ,sort_with-(mRadioWith2/2),sort_with-(mRadioWith2/2));
+
+
         canvas.drawArc(rectF, -90, mAngle, false, mPaint2);
+
     }
 }
