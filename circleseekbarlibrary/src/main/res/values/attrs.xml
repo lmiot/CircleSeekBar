@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="CircleSeekBar">
+    
+    <attr name="radioWith1" format="integer"/>
+    <attr name="radioWith2" format="integer"/>
+    <attr name="radioColor1" format="color"/>
+    <attr name="radioColor2" format="color"/>
+    <attr name="progress" format="integer"/>
+    <attr name="max" format="integer"/>
+
+</declare-styleable>
+</resources>
